@@ -1,0 +1,211 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+.slide {
+        margin-top: 50px;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 50px;
+       
+}
+
+.slide imag{
+    height: 65vh;
+    
+}
+
+.p {
+    font-family: "Bebas Neue";
+    background-color: black;
+}
+
+.h2{
+    font-family: "Bebas Neue";
+    background-color: black;
+
+}
+
+ .container{
+    display: flex;
+    min-height: 50vh;
+    align-items: center;
+    justify-content: center;
+    padding: 30px, 15px;
+} 
+
+.row-cards{
+    display: grid;
+    grid-template-columns: 33%, 33%, 33%;
+    grid-gap: 20px;
+    max-width: 1000px;
+    margin: 50px;
+   
+}
+
+.card-img-top-1{
+    background: url(/images/seleccion\ argentina.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-2{
+    background: url(/images/ginobili.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-3{
+    background: url(/images/portugal.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-6{
+    background: url(/images/ferrari.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-5{
+    background: url(/images/miamigp.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-4{
+    background: url(/images/ferrari.jpg);
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+
+.card{
+    box-shadow: 8 1px 5px 1px rgba(0, 0, 0, 1);
+    overflow: hidden;
+    transition: .2s;
+}
+
+.card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 1px 14px 2px rgba(0, 0, 0, 1);
+}
+
+.card:hover .card-img-top{
+    transform: scale(1.1);
+}
+
+.link{
+    display: inline-block;
+    color: #999;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+ .btn{
+    display: flex;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    font-size: large;
+    font-family: 'Roboto', 'sans-serif';
+    color: #fff;
+    border-radius: 20px;
+     /* box-shadow: 1px 2px 6px 1px rgba(0, 0, 0, .1);  */
+} 
+
+.titular{
+    text-decoration: none;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.column-marketing{
+    text-align: center;
+    font-size: small;
+    padding: 150px;
+    
+}
+
+.card-img-top-10{
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-11{
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.card-img-top-12{
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+    border-radius: 500%;
+}
+
+.imagen1{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    align-items: center;
+    align-content: center;
+    margin-top: 15px;
+   
+}
+
+.imagen2{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    align-items: center;
+    align-content: center;
+    margin-top: 15px;
+    
+}
+
+.imagen3{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    align-items: center;
+    align-content: center;
+    margin-top: 15px;
+    
+}
+
+.container1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px, 15px;
+    
+} 
