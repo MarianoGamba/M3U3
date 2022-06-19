@@ -102,7 +102,7 @@
             <ul class="lista-novedades">
                 {{#each novedades}}
                 <li><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal{{id}}"> <img
-                            src="/public/images/ferrari.jpg" alt="">
+                            src="{{imagen}}" alt="">
                         {{titulo}}</a></li>
                 {{/each}}
             </ul>
@@ -119,6 +119,7 @@
                     </div>
                     <div class="modal-body">
                         <h6>{{subtitulo}}</h6>
+                        <img src="{{imagen}}">
                         <p>{{cuerpo}}</p>
                     </div>
                 </div>
