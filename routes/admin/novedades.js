@@ -9,17 +9,23 @@ var uploader = util.promisify(cloudinary.uploader.upload);
 var destroy = util.promisify(cloudinary.uploader.destroy);
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
-var novedades = await novedadesModel.getNovedades();
+router.get('/', async function (req, res, next) {
+   // var novedades = await novedadesModel.getNovedades();
+   var novedades;
+   if (req.query.q === undefined) {
+      novedades = await novedadesModel.getNovedades();
+   } else {
+      novedades = await novedadesModel.buscarNovedades(req.query.q);
+   }
 
    novedades = novedades.map(novedad => {
       if (novedad.img_id) {
          const imagen = cloudinary.image(novedad.img_id, {
-            width:80,
-            height:80,
+            width: 80,
+            height: 80,
             crop: 'fill'
          });
-         return{
+         return {
             ...novedad,
             imagen
          }
@@ -31,14 +37,16 @@ var novedades = await novedadesModel.getNovedades();
       }
    });
 
-  res.render('admin/novedades', { 
-      layout:'admin/layout',
+   res.render('admin/novedades', {
+      layout: 'admin/layout',
       usuario: req.session.nombre,
-      novedades
+      novedades,
+      is_search: req.query.q !== undefined,
+      q: req.query.q
    });
 });
 
-router.get('/eliminar/:id', async(req, res, next) =>{
+router.get('/eliminar/:id', async (req, res, next) => {
    var id = req.params.id;
    let novedad = await novedadesModel.getNovedadById(id);
    if (novedad.img_id) {
@@ -57,14 +65,14 @@ router.get('/agregar', (req, res, next) => {
 
 router.post('/agregar', async (req, res, next) => {
    console.log(req.body)
-   try{
+   try {
       var img_id = '';
       if (req.files && Object.keys(req.files).length > 0) {
          imagen = req.files.imagen;
          img_id = (await uploader(imagen.tempFilePath)).public_id;
       }
 
-      if(req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != "") {
+      if (req.body.titulo != "" && req.body.subtitulo != "" && req.body.cuerpo != "") {
 
          await novedadesModel.insertNovedad({
             ...req.body,
@@ -72,16 +80,18 @@ router.post('/agregar', async (req, res, next) => {
          });
          res.redirect('/admin/novedades')
       } else {
-         res.render ('admin/agregar', {
+         res.render('admin/agregar', {
             layout: 'admin/layout',
-            error: true, message: 'Todos los campos son requeridos'
+            error: true,
+            message: 'Todos los campos son requeridos'
          })
       }
    } catch (error) {
-      console.log(error) 
+      console.log(error)
       res.render('admin/agregar', {
          layout: 'admin/layout',
-         error: true, message: 'No se cargo la novedad'
+         error: true,
+         message: 'No se cargo la novedad'
       });
    }
 });
@@ -96,9 +106,9 @@ router.get('/modificar/:id', async (req, res, next) => {
    });
 });
 
-router.post('/modificar', async (req, res, next)=>{
-   try{
-      
+router.post('/modificar', async (req, res, next) => {
+   try {
+
       let img_id = req.body.img_original;
       let borrar_img_vieja = false;
       if (req.body.img_delete === "1") {
@@ -123,30 +133,14 @@ router.post('/modificar', async (req, res, next)=>{
       }
       await novedadesModel.modificarNovedadById(obj, req.body.id);
       res.redirect('/admin/novedades');
-   }
-   catch (error) {
+   } catch (error) {
       console.log(error)
       res.render('admin/modificar', {
          layout: 'admin/layout',
-         error: true, message: 'No se modifico la novedad'
+         error: true,
+         message: 'No se modifico la novedad'
       })
    }
 })
-
-router.get('/', async function (req, res, next){
-   var novedades
-   if (req.query.q === undefined) {
-      novedades = await novedadesModel.getNovedades();
-   } else {
-      novedades = await novedadesModel.buscarNovedades(req.query.q);
-   }
-   res.render('admin/novedades', {
-      layout: 'admin/layout',
-      usuario: req.session.nombre,
-      novedades,
-      is_search: req.query.q !== undefined,
-      q: req.query.q
-   });
-});
 
 module.exports = router;

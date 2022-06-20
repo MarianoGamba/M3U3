@@ -288,3 +288,8 @@ footer h5{
     text-align: center;
     padding-top: 15px;
 }
+
+.Titulo-cartas{
+    text-decoration: none;
+    color: black
+}

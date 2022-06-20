@@ -1,5 +1,5 @@
 <!-- navbar inicio -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FormulaNoticias</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -7,12 +7,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" id="">
             <ul class="navbar-nav me-auto mr-8 m-lg-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" data-scroll href="#Inicio">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
+                {{!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-scroll href="#Deportes" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Deportes
@@ -26,7 +26,7 @@
                         <li><a class="dropdown-item" href="#">Basquet</a></li>
                         <li><a class="dropdown-item" href="#">Hokey</a></li>
                         <li><a class="dropdown-item" href="#">Otros</a></li>
-                    </ul>
+                    </ul> --}}
                 <li class="nav-item">
                     <a class="nav-link" data-scroll href="#UltimasNoticias">Ultimas Noticias</a>
                 </li>
@@ -42,10 +42,10 @@
                 </li>
                 </li>
             </ul>
-            <form class="d-flex">
+            {{!-- <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> --}}
         </div>
     </div>
 </nav>
@@ -92,53 +92,56 @@
 
     <!-- carousel final -->
 
-    {{!-- novedades --}}
-
-    <div id="novedades" class="row">
-        <div class="col">
-            <h2 class="titulo-cartas"
-                style="text-align: center; margin-right: 45px; margin-bottom:30px; font-family: Roboto, sans-serif ;">
-                <a href=""> Novedades</a></h2>
-            <ul class="lista-novedades">
-                {{#each novedades}}
-                <li><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal{{id}}"> <img
-                            src="{{imagen}}" alt="">
-                        {{titulo}}</a></li>
-                {{/each}}
-            </ul>
+    <!-- cartas inicio -->
+    <article>
+        <div id="UltimasNoticias" class="title">
+            <div class="Titulo-cartas">
+                <h2 class="Titulo-cartas"> Últimas Noticias</h2>
+            </div>
         </div>
-        {{#each novedades}}
-        <div class="modal fade" id="modal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-tittle" id="exampleModalLabel">{{tittle}}</h5>
-                        <button type="button" class="close" data-dimiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <h6>{{subtitulo}}</h6>
-                        <img src="{{imagen}}">
-                        <p>{{cuerpo}}</p>
+
+        <div id="novedades" class="row">
+            <div class="col" style="padding-right: 100px; padding-left:0px;">
+
+                <ul class="lista-novedades">
+                    {{#each novedades}}
+                    <li><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#modal{{id}}"> <img
+                                src="{{imagen}}" alt="">
+                            {{titulo}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{#each novedades}}
+            <div class="modal fade" id="modal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-tittle">{{titulo}}</h5>
+                            <button type="button" class="close" data-dimiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>{{subtitulo}}</h6>
+                            <img src="{{imagen}}">
+                            <p>{{cuerpo}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            {{/each}}
         </div>
-        {{/each}}
-    </div>
+    </article>
 
 
 
-    {{!-- fin novedades --}}
-
-
-    <!-- cartas inicio -->
-    <section>
+    {{!-- <section>
         <article>
             <div id="UltimasNoticias" class="title">
                 <div class="Titulo-cartas">
-                    <h2><a href=""> Últimas Noticias</a></h2>
+                    <h2><a href="" class="Titulo-cartas"> Últimas Noticias</a></h2>
                 </div>
             </div>
             <div class="cartas-inicio">
@@ -216,7 +219,7 @@
                 </div>
             </div>
         </article>
-    </section>
+    </section> --}}
 
     <!-- cartas final -->
 
@@ -227,32 +230,43 @@
         <article>
             <div id="Videos" class="title">
                 <div class="Titulo-cartas">
-                    <a href="#" style="text-decoration: none;">
-                        <h2>
-                            Videos</h2>
-                    </a>
+
+                    <h2 class="Titulo-cartas">Videos</h2>
+
 
                 </div>
                 <div class="row row-cols-1 row-cols-md-2 g-4">
                     <div class="col">
                         <div class="card-vid">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-vid">
-                          <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-vid">
-                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card-vid">
-                           <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/OvhVLFQmgOY"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -268,9 +282,7 @@
     <section>
         <article>
             <div id="Acercade" class="Titulo-cartas" style="padding-top: 15vw;">
-                <h3> <a href="#">
-                        Equipo
-                    </a></h3>
+                <h3 class="Titulo-cartas">Equipo</h3>
             </div>
             <div class="column-marketing">
                 <div class="container">
@@ -329,11 +341,12 @@
 
     <!-- contactanos -->
 
-    <footer id="Contactanos" style="background: rgb(197, 197, 197);" data-scroll href="Contactanos">
+    <footer style="background: rgb(197, 197, 197);">
+
         <form action="/" method="post">
             <div class="footer-contactos">
-                <div>
-                    <h3 style="font-family: Roboto, sans serif;">¡Contactanos!</h3>
+                <div id="Contactanos">
+                    <h3 class="Titulo-cartas" style="font-family: Roboto, sans serif;">¡Contactanos!</h3>
                 </div>
                 <div class="row">
                     <div class="col col-md-6"><label for="inputName">Nombre</label>
@@ -359,7 +372,7 @@
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Escribinos</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                            style="background: rgb(233, 232, 232);" name="comentarios" rows="2"></textarea>
+                            style="background: rgb(233, 232, 232);" name="escribinos" rows="2"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top: 15px;">Enviar</button>
